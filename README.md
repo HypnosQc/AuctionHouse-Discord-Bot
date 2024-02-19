@@ -1,3 +1,7 @@
+Big thanks to @Niam5 for fixing and redoing code base to make it work properly!!
+
+
+
 # AuctionHouse-Discord-Bot
 Azerothcore based core script
 Lua script that use Webhook to push the information!
