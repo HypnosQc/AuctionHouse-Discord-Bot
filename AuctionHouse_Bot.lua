@@ -1,3 +1,5 @@
+-- Credits Mithras & Niam5 for code functions --
+
 local auctionConfig = {
     auctionWebhookURL = "YOUR_WEBHOOK_URL",
     lastCheckedTimestamp = 0
