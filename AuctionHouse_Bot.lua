@@ -26,7 +26,7 @@ local function ConvertSecondsToReadableTime(seconds)
 end
 
 local function OnAuctionAdd(event, auctionId, owner, item, expireTime, buyout, startBid, currentBid, bidderGUIDLow)
-	local remainingTime = expireTime - os.time()
+    local remainingTime = expireTime - os.time()
 
     local goldBid, silverBid, copperBid = ConvertCopperToGoldSilverCopper(startBid)
     local priceStringBid = string.format("[%d Gold %02d Silver %02d Copper]", goldBid, silverBid, copperBid)
@@ -37,8 +37,12 @@ local function OnAuctionAdd(event, auctionId, owner, item, expireTime, buyout, s
     local hours, minutes = ConvertSecondsToReadableTime(remainingTime)
     local timeString = remainingTime > 0 and string.format("%d hours %d minutes", hours, minutes) or "Auction ended"
 
-    local message = string.format("[%s] has listed [%s] for %s with a buyout price of %s. Time left: %s", owner:GetName(), item:GetName(), priceStringBid, priceStringBuyout, timeString)
-	SendDiscordMessage(message, auctionConfig.auctionWebhookURL)
+    if buyout >= 1 then
+        message = string.format("[%s] has listed [%s] with a starting bid of %s and a buyout price of %s. Time left: %s", owner:GetName(), item:GetName(), priceStringBid, priceStringBuyout, timeString)
+    else
+        message = string.format("[%s] has listed [%s] with a starting bid of %s. Time left: %s", owner:GetName(), item:GetName(), priceStringBid, timeString)
+    end
+    SendDiscordMessage(message, auctionConfig.auctionWebhookURL)
 end
 
 -- Register the event handler for AUCTION_EVENT_ON_ADD
