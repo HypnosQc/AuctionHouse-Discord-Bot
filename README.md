@@ -3,9 +3,9 @@ Big thanks to @Niam5 for fixing and redoing code base to make it work properly!!
 
 
 # AuctionHouse-Discord-Bot
-Azerothcore based core script
-can be used on every core that use latest from today Eluna Lua Engine / Lua Modules
-Lua script that use Webhook to push the information!
+Azerothcore based core script.
+Can be used on every core that use latest from today Eluna Lua Engine / Lua Modules
+Lua script that use Webhook to push the information! Trinity ,Mangos and all the others 😏👌
 
 # [1] create an Webhook into your Discord Server.
 [1] https://ibb.co/MM1WzTG
