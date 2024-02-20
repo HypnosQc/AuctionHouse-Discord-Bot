@@ -1,41 +1,31 @@
-Big thanks to @Niam5 for fixing and redoing code base to make it work properly!!
-
-
-
 # AuctionHouse-Discord-Bot
-Azerothcore based core script.
-Can be used on every core that use latest from today Eluna Lua Engine / Lua Modules
-Lua script that use Webhook to push the information! Trinity ,Mangos and all the others 😏👌
 
-# [1] create an Webhook into your Discord Server.
-[1] https://ibb.co/MM1WzTG
+This is an Azerothcore-based core script designed to work with any core that utilizes the latest Eluna Lua Engine or Lua Modules. The Lua script utilizes Webhooks to push auction house information to a designated Discord server. It's compatible with Trinity, Mangos, and other similar cores.
 
-# [2] Second Image
-[2] https://ibb.co/QMsJBB7
+## Setup Instructions
 
-# [3] Last Image (Copy the Webhook url)
-[3] https://ibb.co/vQm0Xb7
+### 1. Setting Up Discord Webhook
+- First, create a Webhook in your Discord Server.
+  - Follow this [link](https://ibb.co/MM1WzTG) for instructions.
+  - Additionally, refer to the second image [here](https://ibb.co/QMsJBB7).
+  - Copy the Webhook URL from the last image [here](https://ibb.co/vQm0Xb7).
 
-[3] Change your Bot name
-[3] Direct the message to the specific channel of your choice
-[3] + you can change his avatar in here too
-[3] DONT FORGET SAVE THE WEBHOOK URL FOR NEXT STEP !!!!!
+### 2. Configuring the Bot
+- Modify the Lua script `AuctionHouse_Bot.lua`:
+  - Replace `YOUR_WEBHOOK_URL` in line 2 with your actual Webhook URL.
+    - For example:
+      ```lua
+      auctionWebhookURL = "https://discord.com/api/webhooks/1209285815771992114/ILp_CrQINbruBCCh_M-FvWi4UfpQeN0mk0GMRtXXRQQQKM08iXXMf8KasWi2rBbEvx_A",
+      ```
 
-# DOWNLOADING THE LUA BOT FILES
-1.Make sure your server use Eluna lua.
+### 3. Installation
+- Place the `AuctionHouse_Bot.lua` file into your `Core/lua_scripts` folder.
 
-2.Edit AuctionHouse_Bot.lua and replace 
-# line 2 auctionWebhookURL = "YOUR_WEBHOOK_URL",
-# YOUR_WEBHOOK_URL by your WEBHOOKURL Exemple
+### 4. Finalizing Setup
+- Restart your server or use the command `.reload eluna`.
+- Objects added to the auction house will now automatically push information to the designated Discord channel.
 
-auctionWebhookURL = "YOUR_WEBHOOK_URL",
+## Acknowledgement
+Special thanks to @Niam5 for fixing and improving the codebase to ensure proper functionality.
 
-to
-
-auctionWebhookURL = "https://discord.com/api/webhooks/1209285815771992114/ILp_CrQINbruBCCh_M-FvWi4UfpQeN0mk0GMRtXXRQQQKM08iXXMf8KasWi2rBbEvx_A",
-
-3.Put the AuctionHouse_Bot.lua into your Core/lua_scripts folder.
-
-4.Restart server or .reload eluna
-
-5.Add Object into auctionhouse should push the informations into the discord channel selected.
+Feel free to reach out for any assistance or feedback!
