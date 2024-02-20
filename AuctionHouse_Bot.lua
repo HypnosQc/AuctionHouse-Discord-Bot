@@ -28,20 +28,29 @@ end
 local function OnAuctionAdd(event, auctionId, owner, item, expireTime, buyout, startBid, currentBid, bidderGUIDLow)
     local remainingTime = expireTime - os.time()
 
+    -- Get the count of the item
+    local itemCount = item:GetCount()
+
+    -- Convert start bid and buyout to gold, silver, and copper
     local goldBid, silverBid, copperBid = ConvertCopperToGoldSilverCopper(startBid)
-    local priceStringBid = string.format("[%d Gold %02d Silver %02d Copper]", goldBid, silverBid, copperBid)
-
     local goldBuyout, silverBuyout, copperBuyout = ConvertCopperToGoldSilverCopper(buyout)
-    local priceStringBuyout = string.format("[%d Gold %02d Silver %02d Copper]", goldBuyout, silverBuyout, copperBuyout)
 
+    -- Format bid and buyout prices
+    local priceStringBid = string.format("[%d Gold %02d Silver %02d Copper] ", goldBid, silverBid, copperBid)
+    local priceStringBuyout = string.format("[%d Gold %02d Silver %02d Copper] ", goldBuyout, silverBuyout, copperBuyout)
+
+    -- Convert remaining time to readable format
     local hours, minutes = ConvertSecondsToReadableTime(remainingTime)
     local timeString = remainingTime > 0 and string.format("%d hours %d minutes", hours, minutes) or "Auction ended"
 
+    -- Construct the message including item count
     if buyout >= 1 then
-        message = string.format("[%s] has listed [%s] with a starting bid of %s and a buyout price of %s. Time left: %s", owner:GetName(), item:GetName(), priceStringBid, priceStringBuyout, timeString)
+        message = string.format("[%s] has listed [%s x%d] with a starting bid of %s and a buyout price of %s. Time left: %s", owner:GetName(), item:GetName(), itemCount, priceStringBid, priceStringBuyout, timeString)
     else
-        message = string.format("[%s] has listed [%s] with a starting bid of %s. Time left: %s", owner:GetName(), item:GetName(), priceStringBid, timeString)
+        message = string.format("[%s] has listed [%s x%d] with a starting bid of %s. Time left: %s", owner:GetName(), item:GetName(), itemCount, priceStringBid, timeString)
     end
+
+    -- Send the message to Discord
     SendDiscordMessage(message, auctionConfig.auctionWebhookURL)
 end
 
