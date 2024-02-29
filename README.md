@@ -1,6 +1,6 @@
 # AuctionHouse-Discord-Bot
 
-This is an Azerothcore-based core script designed to work with any core that utilizes the latest Eluna Lua Engine or Lua Modules. The Lua script utilizes Webhooks to push auction house information to a designated Discord server. It's compatible with Trinity, Mangos, and other similar cores.
+This is an Azerothcore-based core script designed to work with any core that utilizes the latest Eluna Lua Engine or Lua Modules. The Lua script utilizes Webhooks to push auction house information to a designated Discord channel. It's compatible with Trinity, Mangos, and other similar cores.
 
 ## Setup Instructions
 
@@ -27,5 +27,7 @@ This is an Azerothcore-based core script designed to work with any core that uti
 
 ## Acknowledgement
 Special thanks to @Niam5 for fixing and improving the codebase to ensure proper functionality.
+
+Discord embeds improved by ReynoldsCahoon.
 
 Feel free to reach out for any assistance or feedback!
