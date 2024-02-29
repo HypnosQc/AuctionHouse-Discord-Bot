@@ -9,6 +9,7 @@ local auctionConfig = {
     copperEmojiID     = "YOUR_COPPER_EMOJI_ID",     -- Once added, in any channel type your emoji preceded by a backslash \ i.e. "\:gold:"
                                                     -- This will give you the emoji id, which you place in these values i.e. "<:gold:1209645132832575578>"
     itemLinkDB        = "YOUT_ITEM_LINK_DB",    -- Your own AoWoW instance, or wowhead i.e. "https://www.wowhead.com/wotlk/"
+    thumbnailIcons    = true                    -- Set to false if you don't have DBC data in your database and wish to forego icon thumbnails
     itemIconDB        = "YOUR_ITEM_ICON_DB",    -- A web-accessible directory of all icon images, or wowhead i.e. "https://wow.zamimg.com/images/wow/icons/large/"
     botImage          = "YOUR_BOT_IMAGE_URL"    -- The profile picture of the bot that posts in Discord
     itemQuality       = {
@@ -31,8 +32,12 @@ local function SendDiscordEmbed(message, webhookURL)
 end
 
 local function GetIconFromDBC(itemId)
-    local icon = WorldDBQuery("SELECT InventoryIcon_1 FROM itemdisplayinfo_dbc WHERE ID = (SELECT displayid FROM item_template WHERE entry = "..itemId..")");
-    return auctionConfig.itemIconDB..icon:GetString(0):lower()..'.jpg'
+    if auctionConfig.thumbnailIcons then
+        local icon = WorldDBQuery("SELECT InventoryIcon_1 FROM itemdisplayinfo_dbc WHERE ID = (SELECT displayid FROM item_template WHERE entry = "..itemId..")");
+        return auctionConfig.itemIconDB..icon:GetString(0):lower()..'.jpg'
+    else
+        return ""
+    end
 end
 
 local function GetPlayerIcon(player)
