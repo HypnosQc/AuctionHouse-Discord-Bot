@@ -19,18 +19,22 @@ This is an Azerothcore-based core script designed to work with any core that uti
       ```lua
       auctionWebhookURL = "https://discord.com/api/webhooks/1209285815771992114/ILp_CrQINbruBCCh_M-FvWi4UfpQeN0mk0GMRtXXRQQQKM08iXXMf8KasWi2rBbEvx_A",
       ```
+### 3. Configure your Discord Emojis
+- In your Discord Server Settings navigate to the Emoji section and add 3 individual emojis to represent gold/silver/copper.
+- Once added, in any channel type `\:gold:` (or whatever you named your gold emoji) and it should output something that looks like this: `<:gold:1209645132832575578>`
+- Repeat this step for silver and copper and place the provided ID's into the corresponding EmojiID in your auctionConfig.
 
-### 3. Import Item Display Data to your World Database
+### 4. Import Item Display Data to your World Database
 By default `thumbnailIcons` is set to `true`. This requires that your `itemdisplayinfo.dbc` data is imported into your world database. This DBC contains the name of the icon images used by each item. Without it, the script has no way of knowing which icons to display.
 
 You can forego this step by setting `thumbnailIcons` to `false` in the `auctionConfig`, but your embeds will not have thumbnail icons.
 
 If you have custom icons on your server, it will be necessary to host your icons yourself and set the `itemIconDB` to a web accessible URI.
 
-### 4. Installation
+### 5. Installation
 - Place the `AuctionHouse_Bot.lua` file into your `Core/lua_scripts` folder.
 
-### 5. Finalizing Setup
+### 6. Finalizing Setup
 - Restart your server or use the command `.reload eluna`.
 - Objects added to the auction house will now automatically push information to the designated Discord channel.
 
