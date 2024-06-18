@@ -1,4 +1,4 @@
--- Credits Mithras, Niam5, and ReynoldsCahoon --
+-- Credits Hypnos, Niam5, and ReynoldsCahoon --
 
 -- TODO: Include a proper JSON library
 
